@@ -1,4 +1,10 @@
-# React + Vite
+# STO - Microgreens for Health
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Finspitereno-lang%2Fsto-app&env=MONGO_URI,JWT_SECRET,CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,RAZORPAY_KEY_ID,RAZORPAY_KEY_SECRET,EMAIL_USER,EMAIL_PASS,VITE_RAZORPAY_KEY_ID)
+
+## Project Overview
+STO is a modern platform for microgreens, featuring a full-stack architecture with a React frontend and Node.js/Express backend.
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
