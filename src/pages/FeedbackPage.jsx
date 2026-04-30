@@ -75,7 +75,7 @@ export default function FeedbackPage() {
     
     if (Object.keys(e2).length === 0) {
       try {
-        const response = await fetch(`${API_BASE}/api/feedback`, {
+        const response = await fetch(`${API_BASE}/feedback`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ export default function LoginPage() {
 
     if (mode === 'forgot') {
       try {
-        const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
+        const res = await fetch(`${API_BASE}/auth/forgot-password`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email })
@@ -41,7 +41,7 @@ export default function LoginPage() {
 
     if (mode === 'reset') {
       try {
-        const res = await fetch(`${API_BASE}/api/auth/reset-password`, {
+        const res = await fetch(`${API_BASE}/auth/reset-password`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email, otp: form.otp, newPassword: form.newPassword })
@@ -55,7 +55,7 @@ export default function LoginPage() {
       return;
     }
 
-    const endpoint = tab === 'login' ? '/api/auth/login' : '/api/auth/register';
+    const endpoint = tab === 'login' ? '/auth/login' : '/auth/register';
     
     try {
       const res = await fetch(`${API_BASE}${endpoint}`, {

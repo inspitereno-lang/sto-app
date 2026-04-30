@@ -15,7 +15,7 @@ export default function ProductCategories() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/categories`);
+        const res = await fetch(`${API_BASE}/categories`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;

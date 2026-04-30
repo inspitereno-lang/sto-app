@@ -24,13 +24,13 @@ export default function ShopPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const catRes = await fetch(`${API_BASE}/api/categories`);
+        const catRes = await fetch(`${API_BASE}/categories`);
         if (catRes.ok) {
           const catJson = await catRes.json();
           setCategories(catJson.data || catJson);
         }
 
-        const res = await fetch(`${API_BASE}/api/products`);
+        const res = await fetch(`${API_BASE}/products`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;

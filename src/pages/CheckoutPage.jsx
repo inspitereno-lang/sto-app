@@ -106,7 +106,7 @@ export default function CheckoutPage() {
 
     try {
       // 1. Create Order on Backend
-      const resOrder = await fetch(`${API_BASE}/api/orders/create-razorpay-order`, {
+      const resOrder = await fetch(`${API_BASE}/orders/create-razorpay-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
         handler: async function (response) {
           try {
             // 3. Verify Payment on Backend
-            const resVerify = await fetch(`${API_BASE}/api/orders/verify-payment`, {
+            const resVerify = await fetch(`${API_BASE}/orders/verify-payment`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

@@ -20,7 +20,7 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     const fetchDynamicContent = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/pages`);
+        const res = await fetch(`${API_BASE}/pages`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;

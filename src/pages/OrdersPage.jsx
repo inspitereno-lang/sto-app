@@ -17,7 +17,7 @@ export default function OrdersPage() {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await fetch(`${API_BASE}/api/auth/logout`, {
+        await fetch(`${API_BASE}/auth/logout`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -39,7 +39,7 @@ export default function OrdersPage() {
       }
 
       try {
-        const res = await fetch(`${API_BASE}/api/orders`, {
+        const res = await fetch(`${API_BASE}/orders`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

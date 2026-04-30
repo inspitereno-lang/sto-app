@@ -16,7 +16,7 @@ export default function CartPage() {
   useEffect(() => {
     const fetchCats = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/categories`);
+        const res = await fetch(`${API_BASE}/categories`);
         if (res.ok) {
           const json = await res.json();
           setCategories(json.data || json);
