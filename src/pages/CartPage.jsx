@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config/api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
@@ -15,7 +16,7 @@ export default function CartPage() {
   useEffect(() => {
     const fetchCats = async () => {
       try {
-        const res = await fetch('http://localhost:5001/api/categories');
+        const res = await fetch(`${API_BASE}/api/categories`);
         if (res.ok) {
           const json = await res.json();
           setCategories(json.data || json);

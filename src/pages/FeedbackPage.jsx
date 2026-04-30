@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import API_BASE from '../config/api';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Send, CheckCircle, ArrowRight } from 'lucide-react';
@@ -74,7 +75,7 @@ export default function FeedbackPage() {
     
     if (Object.keys(e2).length === 0) {
       try {
-        const response = await fetch('http://localhost:5001/api/feedback', {
+        const response = await fetch(`${API_BASE}/api/feedback`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

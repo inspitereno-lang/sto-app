@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sto-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    rootDir: server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5001
+      - key: MONGODB_URI
+        sync: false # User will need to provide this in Render dashboard
+      - key: JWT_SECRET
+        sync: false # User will need to provide this in Render dashboard
+      - key: FRONTEND_URL
+        sync: false # User will need to provide this in Render dashboard (Vercel URL)

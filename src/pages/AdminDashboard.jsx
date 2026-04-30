@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, Package, Tag, ShoppingBag, Users, FileText, MapPin, Settings, AlertTriangle, Plus, Edit2, Trash2, X, Check, Eye, Star, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import API_BASE from '../config/api';
 import './AdminDashboard.css';
 
 const NAV = [
@@ -82,28 +83,28 @@ export default function AdminDashboard() {
 
     const fetchData = async () => {
       try {
-        const catRes = await request('http://localhost:5001/api/categories');
+        const catRes = await request(`${API_BASE}/api/categories`);
         if (catRes?.ok) {
           const json = await catRes.json();
           setCategories(json.data || json);
         }
 
-        const blogRes = await request('http://localhost:5001/api/blogs');
+        const blogRes = await request(`${API_BASE}/api/blogs`);
         if (blogRes?.ok) setBlogs(await blogRes.json());
 
-        const prodRes = await request('http://localhost:5001/api/products');
+        const prodRes = await request(`${API_BASE}/api/products`);
         if (prodRes?.ok) {
           const json = await prodRes.json();
           setProducts(json.data || json);
         }
 
-        const ordersRes = await request('http://localhost:5001/api/orders/admin/all');
+        const ordersRes = await request(`${API_BASE}/api/orders/admin/all`);
         if (ordersRes?.ok) {
           const json = await ordersRes.json();
           setOrders(json);
         }
 
-        const usersRes = await request('http://localhost:5001/api/auth/admin/users');
+        const usersRes = await request(`${API_BASE}/api/auth/admin/users`);
         if (usersRes?.ok) {
           const json = await usersRes.json();
           // Filter to show only customers (role: 'user')
@@ -112,19 +113,19 @@ export default function AdminDashboard() {
           console.error('Failed to fetch customers:', await usersRes.text());
         }
 
-        const feedbackRes = await request('http://localhost:5001/api/feedback');
+        const feedbackRes = await request(`${API_BASE}/api/feedback`);
         if (feedbackRes?.ok) {
           const json = await feedbackRes.json();
           setFeedbacks(json);
         }
 
-        const statsRes = await request('http://localhost:5001/api/admin/stats');
+        const statsRes = await request(`${API_BASE}/api/admin/stats`);
         if (statsRes?.ok) {
           const json = await statsRes.json();
           setDashboardStats(json);
         }
 
-        const settingsRes = await request('http://localhost:5001/api/admin/settings');
+        const settingsRes = await request(`${API_BASE}/api/admin/settings`);
         if (settingsRes?.ok) {
           const json = await settingsRes.json();
           setPlatformSettings(json);
@@ -143,7 +144,7 @@ export default function AdminDashboard() {
 
   const handleDeleteProduct = async (id) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/products/${id}`, {
+    const res = await fetch(`${API_BASE}/api/products/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -159,7 +160,7 @@ export default function AdminDashboard() {
   const handleUpdateProfile = async () => {
     const token = localStorage.getItem('adminToken');
     try {
-      const res = await fetch('http://localhost:5001/api/settings/update-profile', {
+      const res = await fetch(`${API_BASE}/api/settings/update-profile`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -183,7 +184,7 @@ export default function AdminDashboard() {
   const handleSaveProduct = async () => {
     const token = localStorage.getItem('adminToken');
     const method = editProduct ? 'PUT' : 'POST';
-    const url = editProduct ? `http://localhost:5001/api/products/${editProduct._id || editProduct.id}` : 'http://localhost:5001/api/products';
+    const url = editProduct ? `${API_BASE}/api/products/${editProduct._id || editProduct.id}` : `${API_BASE}/api/products`;
 
     const res = await fetch(url, {
       method: method,
@@ -224,7 +225,7 @@ export default function AdminDashboard() {
   const handleSaveCategory = async () => {
     const token = localStorage.getItem('adminToken');
     const method = editCategory ? 'PUT' : 'POST';
-    const url = editCategory ? `http://localhost:5001/api/categories/${editCategory._id || editCategory.id}` : 'http://localhost:5001/api/categories';
+    const url = editCategory ? `${API_BASE}/api/categories/${editCategory._id || editCategory.id}` : `${API_BASE}/api/categories`;
 
     const res = await fetch(url, {
       method: method,
@@ -249,7 +250,7 @@ export default function AdminDashboard() {
 
   const handleDeleteCategory = async (id) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/categories/${id}`, {
+    const res = await fetch(`${API_BASE}/api/categories/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -268,7 +269,7 @@ export default function AdminDashboard() {
   const handleSaveBlog = async () => {
     const token = localStorage.getItem('adminToken');
     const method = editBlog ? 'PUT' : 'POST';
-    const url = editBlog ? `http://localhost:5001/api/blogs/${editBlog._id || editBlog.id}` : 'http://localhost:5001/api/blogs';
+    const url = editBlog ? `${API_BASE}/api/blogs/${editBlog._id || editBlog.id}` : `${API_BASE}/api/blogs`;
 
     const res = await fetch(url, {
       method: method,
@@ -295,7 +296,7 @@ export default function AdminDashboard() {
 
   const handleDeleteBlog = async (id) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/blogs/${id}`, {
+    const res = await fetch(`${API_BASE}/api/blogs/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -310,7 +311,7 @@ export default function AdminDashboard() {
 
   const handleUpdateOrderStatus = async (id, status) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/orders/${id}/status`, {
+    const res = await fetch(`${API_BASE}/api/orders/${id}/status`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ status })
@@ -326,7 +327,7 @@ export default function AdminDashboard() {
 
   const handleDeleteCustomer = async (id) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/auth/admin/users/${id}`, {
+    const res = await fetch(`${API_BASE}/api/auth/admin/users/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -341,7 +342,7 @@ export default function AdminDashboard() {
 
   const handleDeleteFeedback = async (id) => {
     const token = localStorage.getItem('adminToken');
-    const res = await fetch(`http://localhost:5001/api/feedback/${id}`, {
+    const res = await fetch(`${API_BASE}/api/feedback/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -361,7 +362,7 @@ export default function AdminDashboard() {
     formData.append('image', file);
     const token = localStorage.getItem('adminToken');
     try {
-      const res = await fetch('http://localhost:5001/api/upload', {
+      const res = await fetch(`${API_BASE}/api/upload`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,
@@ -898,14 +899,17 @@ export default function AdminDashboard() {
                       
                       const token = localStorage.getItem('adminToken');
                       try {
-                        const res = await fetch('http://localhost:5001/api/settings/change-password', {
+                        const res = await fetch(`${API_BASE}/api/settings/change-password`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                           body: JSON.stringify({ currentPassword: cp, newPassword: np })
                         });
                         if (res.ok) {
                           showToast('Password updated successfully');
-                          ['currentPassword', 'newPassword', 'confirmPassword'].forEach(id => document.getElementById(id).value = '');
+                          ['currentPassword', 'newPassword', 'confirmPassword'].forEach(id => {
+                            const el = document.getElementById(id);
+                            if (el) el.value = '';
+                          });
                         } else {
                           const d = await res.json();
                           showToast(d.message || 'Error updating password', 'error');
@@ -950,14 +954,14 @@ export default function AdminDashboard() {
                     onClick={async () => {
                       const token = localStorage.getItem('adminToken');
                       try {
-                        const res = await fetch('http://localhost:5001/api/admin/settings', {
+                        const res = await fetch(`${API_BASE}/api/admin/settings`, {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                           body: JSON.stringify(platformSettings)
                         });
                         if (res.ok) {
                           showToast('Inventory settings saved');
-                          const statsRes = await fetch('http://localhost:5001/api/admin/stats', { headers: { 'Authorization': `Bearer ${token}` } });
+                          const statsRes = await fetch(`${API_BASE}/api/admin/stats`, { headers: { 'Authorization': `Bearer ${token}` } });
                           if (statsRes.ok) setDashboardStats(await statsRes.json());
                         }
                       } catch (e) { showToast('Error saving settings', 'error'); }

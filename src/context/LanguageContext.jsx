@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import API_BASE from '../config/api';
 
 const LanguageContext = createContext();
 
@@ -19,7 +20,7 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     const fetchDynamicContent = async () => {
       try {
-        const res = await fetch('http://localhost:5001/api/pages');
+        const res = await fetch(`${API_BASE}/api/pages`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;

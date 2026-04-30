@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config/api';
 import { motion } from 'framer-motion';
 import { Package, Truck, CheckCircle, Clock, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ export default function OrdersPage() {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await fetch('http://localhost:5001/api/auth/logout', {
+        await fetch(`${API_BASE}/api/auth/logout`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -38,7 +39,7 @@ export default function OrdersPage() {
       }
 
       try {
-        const res = await fetch('http://localhost:5001/api/orders', {
+        const res = await fetch(`${API_BASE}/api/orders`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

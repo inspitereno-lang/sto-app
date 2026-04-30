@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import API_BASE from '../config/api';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
@@ -23,13 +24,13 @@ export default function ShopPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const catRes = await fetch('http://localhost:5001/api/categories');
+        const catRes = await fetch(`${API_BASE}/api/categories`);
         if (catRes.ok) {
           const catJson = await catRes.json();
           setCategories(catJson.data || catJson);
         }
 
-        const res = await fetch('http://localhost:5001/api/products');
+        const res = await fetch(`${API_BASE}/api/products`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;

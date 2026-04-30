@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config/api';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingCart, Minus, Plus, ArrowLeft, Check, Leaf } from 'lucide-react';
@@ -28,21 +29,21 @@ export default function ProductDetailPage() {
       setLoading(true);
       try {
         // Fetch categories for labels
-        const catRes = await fetch('http://localhost:5001/api/categories');
+        const catRes = await fetch(`${API_BASE}/api/categories`);
         if (catRes.ok) {
           const catJson = await catRes.json();
           setCategories(catJson.data || catJson);
         }
 
         // Fetch product
-        const res = await fetch(`http://localhost:5001/api/products/${id}`);
+        const res = await fetch(`${API_BASE}/api/products/${id}`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;
           setProduct(data);
 
           // Fetch all products for related
-          const allRes = await fetch('http://localhost:5001/api/products');
+          const allRes = await fetch(`${API_BASE}/api/products`);
           if (allRes.ok) {
             const allJson = await allRes.json();
             setAllProducts(allJson.data || allJson);

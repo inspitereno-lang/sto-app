@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import API_BASE from '../config/api';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, Leaf } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -25,7 +26,7 @@ export default function LoginPage() {
 
     if (mode === 'forgot') {
       try {
-        const res = await fetch(`http://localhost:5001/api/auth/forgot-password`, {
+        const res = await fetch(`${API_BASE}/api/auth/forgot-password`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email })
@@ -40,7 +41,7 @@ export default function LoginPage() {
 
     if (mode === 'reset') {
       try {
-        const res = await fetch(`http://localhost:5001/api/auth/reset-password`, {
+        const res = await fetch(`${API_BASE}/api/auth/reset-password`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email, otp: form.otp, newPassword: form.newPassword })
@@ -57,7 +58,7 @@ export default function LoginPage() {
     const endpoint = tab === 'login' ? '/api/auth/login' : '/api/auth/register';
     
     try {
-      const res = await fetch(`http://localhost:5001${endpoint}`, {
+      const res = await fetch(`${API_BASE}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

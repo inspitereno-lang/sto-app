@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../config/api';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, CreditCard } from 'lucide-react';
@@ -105,7 +106,7 @@ export default function CheckoutPage() {
 
     try {
       // 1. Create Order on Backend
-      const resOrder = await fetch('http://localhost:5001/api/orders/create-razorpay-order', {
+      const resOrder = await fetch(`${API_BASE}/api/orders/create-razorpay-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ export default function CheckoutPage() {
         handler: async function (response) {
           try {
             // 3. Verify Payment on Backend
-            const resVerify = await fetch('http://localhost:5001/api/orders/verify-payment', {
+            const resVerify = await fetch(`${API_BASE}/api/orders/verify-payment`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

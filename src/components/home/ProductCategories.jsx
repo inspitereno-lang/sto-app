@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE from '../../config/api';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -14,7 +15,7 @@ export default function ProductCategories() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('http://localhost:5001/api/categories');
+        const res = await fetch(`${API_BASE}/api/categories`);
         if (res.ok) {
           const json = await res.json();
           const data = json.data || json;
