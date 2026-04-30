@@ -7,17 +7,17 @@ import { toast } from 'react-hot-toast';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 
-const Input = ({ label, id, value, onChange, placeholder, type='text', autoComplete }) => (
+const Input = ({ label, id, value, onChange, placeholder, type = 'text', autoComplete }) => (
   <div className="form-group">
     <label className="form-label" htmlFor={id}>{label}</label>
-    <input 
-      id={id} 
-      type={type} 
-      value={value} 
+    <input
+      id={id}
+      type={type}
+      value={value}
       onChange={e => onChange(e.target.value)}
-      placeholder={placeholder} 
-      className="form-input" 
-      required 
+      placeholder={placeholder}
+      className="form-input"
+      required
       autoComplete={autoComplete}
     />
   </div>
@@ -33,7 +33,7 @@ export default function CheckoutPage() {
   const [form, setForm] = useState(() => {
     const saved = localStorage.getItem('sto_shipping_info');
     if (saved) return JSON.parse(saved);
-    return { email:'', name:'', address:'', city:'Vantaa', postal:'01300', country: c.countries[0], phone:'' };
+    return { email: '', name: '', address: '', city: 'Vantaa', postal: '01300', country: c.countries[0], phone: '' };
   });
 
   const set = (k, v) => {
@@ -68,7 +68,7 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const totalAmount = subtotal + shipping;
 
     const orderData = {
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
     };
 
     const token = localStorage.getItem('token');
-    
+
     if (!token) {
       toast.error(c.loginToPlace || 'Please log in to place an order.');
       navigate('/account?redirect=/checkout');
@@ -145,14 +145,14 @@ export default function CheckoutPage() {
 
             if (!resVerify.ok) throw new Error('Payment verification failed');
             const verifiedOrder = await resVerify.json();
-            
-            const localOrder = { 
-              orderNum: verifiedOrder.trackingNumber || verifiedOrder._id, 
-              customer: form, 
-              items, 
-              subtotal, 
-              total: totalAmount, 
-              date: new Date().toISOString() 
+
+            const localOrder = {
+              orderNum: verifiedOrder.trackingNumber || verifiedOrder._id,
+              customer: form,
+              items,
+              subtotal,
+              total: totalAmount,
+              date: new Date().toISOString()
             };
             localStorage.setItem('sto_last_order', JSON.stringify(localOrder));
             clearCart();
@@ -181,8 +181,8 @@ export default function CheckoutPage() {
 
 
   return (
-    <main style={{ paddingTop:'80px', background:'#FAFAF8', minHeight:'100vh', paddingBottom:'80px' }}>
-      <div className="container" style={{ maxWidth: '1100px', paddingTop:'48px' }}>
+    <main style={{ paddingTop: '80px', background: '#FAFAF8', minHeight: '100vh', paddingBottom: '80px' }}>
+      <div className="container" style={{ maxWidth: '1100px', paddingTop: '48px' }}>
         <header style={{ marginBottom: '48px', textAlign: 'center' }}>
           <h1 style={styles.title}>{c.title}</h1>
           <p style={styles.sub}>{c.sub}</p>
@@ -197,19 +197,19 @@ export default function CheckoutPage() {
                 <div style={styles.sectionNum}>01</div>
                 <h2 style={styles.sectionTitle}>{c.contact}</h2>
               </div>
-              <Input label={c.email} id="email" value={form.email} onChange={v=>set('email',v)} placeholder="you@example.com" type="email" autoComplete="email"/>
-              <Input label={c.phone || 'Mobile Number'} id="phone" value={form.phone} onChange={v=>set('phone',v)} placeholder="+358 00 000 0000" type="tel" autoComplete="tel"/>
+              <Input label={c.email} id="email" value={form.email} onChange={v => set('email', v)} placeholder="you@example.com" type="email" autoComplete="email" />
+              <Input label={c.phone || 'Mobile Number'} id="phone" value={form.phone} onChange={v => set('phone', v)} placeholder="+358 00 000 0000" type="tel" autoComplete="tel" />
 
               {/* Shipping */}
-              <div style={{ ...styles.sectionHeader, marginTop:'32px' }}>
+              <div style={{ ...styles.sectionHeader, marginTop: '32px' }}>
                 <div style={styles.sectionNum}>02</div>
                 <h2 style={styles.sectionTitle}>{c.shipping}</h2>
               </div>
-              <Input label={c.name} id="name" value={form.name} onChange={v=>set('name',v)} placeholder={c.name} autoComplete="name"/>
-              <Input label={c.address} id="address" value={form.address} onChange={v=>set('address',v)} placeholder={c.address} autoComplete="street-address"/>
-              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px' }}>
-                <Input label={c.city} id="city" value={form.city} onChange={v=>set('city',v)} placeholder={c.city} autoComplete="address-level2"/>
-                <Input label={c.postal} id="postal" value={form.postal} onChange={v=>set('postal',v)} placeholder="00000" autoComplete="postal-code"/>
+              <Input label={c.name} id="name" value={form.name} onChange={v => set('name', v)} placeholder={c.name} autoComplete="name" />
+              <Input label={c.address} id="address" value={form.address} onChange={v => set('address', v)} placeholder={c.address} autoComplete="street-address" />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <Input label={c.city} id="city" value={form.city} onChange={v => set('city', v)} placeholder={c.city} autoComplete="address-level2" />
+                <Input label={c.postal} id="postal" value={form.postal} onChange={v => set('postal', v)} placeholder="00000" autoComplete="postal-code" />
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="country">{c.country}</label>
@@ -219,15 +219,15 @@ export default function CheckoutPage() {
               </div>
 
               {/* Payment */}
-              <div style={{ ...styles.sectionHeader, marginTop:'32px' }}>
+              <div style={{ ...styles.sectionHeader, marginTop: '32px' }}>
                 <div style={styles.sectionNum}>03</div>
                 <h2 style={styles.sectionTitle}>{c.payment}</h2>
               </div>
               <div style={styles.payCard}>
                 <div style={styles.payCardHeader}>
-                  <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-                    <CreditCard size={16} style={{ color:'#0F2F24' }}/>
-                    <span style={{ fontFamily:"'Inter',sans-serif", fontSize:'14px', fontWeight:500 }}>{c.securePay || 'Razorpay Secure Payment'}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CreditCard size={16} style={{ color: '#0F2F24' }} />
+                    <span style={{ fontFamily: "'Inter',sans-serif", fontSize: '14px', fontWeight: 500 }}>{c.securePay || 'Razorpay Secure Payment'}</span>
                   </div>
                 </div>
                 <p style={{ fontSize: '14px', color: '#6b6b6b' }}>
@@ -240,8 +240,8 @@ export default function CheckoutPage() {
               </motion.button>
 
               <div style={styles.secure}>
-                <div style={{ display:'flex', alignItems:'center', gap:'6px' }}>
-                  <Lock size={13} style={{ color:'#7BAA8D' }}/>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Lock size={13} style={{ color: '#7BAA8D' }} />
                   <span style={{ fontWeight: 600 }}>{c.secure}</span>
                 </div>
                 <p style={styles.secureDesc}>{c.secureDesc}</p>
@@ -253,12 +253,12 @@ export default function CheckoutPage() {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <div style={styles.summary}>
               <h2 style={styles.summaryTitle}>{c.summary}</h2>
-              
+
               <div style={styles.summaryItems}>
                 {items.map((item, idx) => (
                   <div key={`${item.id}-${idx}`} style={styles.summaryItem}>
                     <div style={styles.summaryImg}>
-                      <img src={item.image || 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=200&q=80'} alt={item.name} style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+                      <img src={item.image || 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=200&q=80'} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       <div style={styles.productQty}>{item.qty}</div>
                     </div>
                     <div style={{ flex: 1 }}>
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
               </div>
 
               <div style={styles.divider} />
-              
+
               <div style={styles.summaryRow}><span>{c.subtotal}</span><span>€{subtotal.toFixed(2)}</span></div>
               <div style={styles.summaryRow}><span>{c.shippingFee}</span><span>€{shipping.toFixed(2)}</span></div>
               <div style={styles.divider} />
@@ -284,25 +284,25 @@ export default function CheckoutPage() {
 }
 
 const styles = {
-  title: { fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.5rem,5vw,3.5rem)', color:'#0F2F24', fontWeight:300, marginBottom:'8px' },
-  sub: { fontSize:'16px', color:'#9a9a9a', marginBottom:'48px' },
-  layout: { display:'grid', gridTemplateColumns:'1fr 400px', gap:'64px', alignItems:'start', position: 'relative' },
-  sectionHeader: { display:'flex', alignItems:'baseline', gap:'12px', marginBottom:'24px' },
-  sectionNum: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.8rem', color:'#e0ddd6', fontWeight:300 },
-  sectionTitle: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.6rem', color:'#0F2F24', fontWeight:400 },
-  payCard: { background:'#F3F0EA', borderRadius:'16px', padding:'24px', display:'flex', flexDirection:'column', gap:'8px', marginBottom:'24px' },
-  payCardHeader: { display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'16px' },
-  secure: { display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'4px', marginTop:'24px' },
-  secureDesc: { fontSize:'11px', color:'#9a9a9a', textAlign:'center', maxWidth:'300px', lineHeight:'1.5' },
-  summary: { background:'#ffffff', border:'1px solid #eae7e1', borderRadius:'20px', padding:'40px', position:'sticky', top:'100px', display:'flex', flexDirection:'column', gap:'20px' },
-  summaryTitle: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.5rem', color:'#0F2F24', fontWeight:400 },
-  summaryItems: { display:'flex', flexDirection:'column', gap:'16px' },
-  summaryItem: { display:'flex', gap:'16px', alignItems:'center' },
-  summaryImg: { width:'64px', height:'64px', borderRadius:'12px', overflow:'hidden', flexShrink:0, background:'#F3F0EA', position:'relative' },
-  productQty: { position:'absolute', top:'-8px', right:'-8px', width:'20px', height:'20px', background:'#0F2F24', color:'#fff', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'10px' },
-  summaryItemName: { fontFamily:"'Inter',sans-serif", fontSize:'14px', fontWeight:500, color:'#0F2F24' },
-  summaryItemPrice: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.1rem', color:'#0F2F24', flexShrink:0 },
-  divider: { height:'1px', background:'#eae7e1' },
-  summaryRow: { display:'flex', justifyContent:'space-between', fontSize:'15px', color:'#6b6b6b' },
-  totalRow: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.3rem', color:'#0F2F24', fontWeight:400, color:'#0F2F24' },
+  title: { fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.5rem,5vw,3.5rem)', color: '#0F2F24', fontWeight: 300, marginBottom: '8px' },
+  sub: { fontSize: '16px', color: '#9a9a9a', marginBottom: '48px' },
+  layout: { display: 'grid', gridTemplateColumns: '1fr 400px', gap: '64px', alignItems: 'start', position: 'relative' },
+  sectionHeader: { display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '24px' },
+  sectionNum: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.8rem', color: '#e0ddd6', fontWeight: 300 },
+  sectionTitle: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.6rem', color: '#0F2F24', fontWeight: 400 },
+  payCard: { background: '#F3F0EA', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' },
+  payCardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' },
+  secure: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', marginTop: '24px' },
+  secureDesc: { fontSize: '11px', color: '#9a9a9a', textAlign: 'center', maxWidth: '300px', lineHeight: '1.5' },
+  summary: { background: '#ffffff', border: '1px solid #eae7e1', borderRadius: '20px', padding: '40px', position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '20px' },
+  summaryTitle: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.5rem', color: '#0F2F24', fontWeight: 400 },
+  summaryItems: { display: 'flex', flexDirection: 'column', gap: '16px' },
+  summaryItem: { display: 'flex', gap: '16px', alignItems: 'center' },
+  summaryImg: { width: '64px', height: '64px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0, background: '#F3F0EA', position: 'relative' },
+  productQty: { position: 'absolute', top: '-8px', right: '-8px', width: '20px', height: '20px', background: '#0F2F24', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px' },
+  summaryItemName: { fontFamily: "'Inter',sans-serif", fontSize: '14px', fontWeight: 500, color: '#0F2F24' },
+  summaryItemPrice: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.1rem', color: '#0F2F24', flexShrink: 0 },
+  divider: { height: '1px', background: '#eae7e1' },
+  summaryRow: { display: 'flex', justifyContent: 'space-between', fontSize: '15px', color: '#6b6b6b' },
+  totalRow: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.3rem', color: '#0F2F24', fontWeight: 400, color: '#0F2F24' },
 };

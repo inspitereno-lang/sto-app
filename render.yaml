@@ -3,7 +3,7 @@ services:
     name: sto-backend
     env: node
     plan: free
-    buildCommand: npm install
+    buildCommand: pip install -r requirements.txt && npm install
     startCommand: node index.js
     rootDir: server
     envVars:
