@@ -1114,23 +1114,62 @@ export default function AdminDashboard() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div className="form-group">
                     <label className="form-label">Category</label>
-                    <select 
-                      value={blogForm.category} 
-                      onChange={e => setBlogForm({ ...blogForm, category: e.target.value })} 
-                      className="form-select"
-                    >
-                      <option value="">Select Category</option>
-                      {categories.map(cat => (
-                        <option key={cat.id || cat._id} value={cat.name}>{cat.name}</option>
-                      ))}
-                    </select>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                      {!blogForm.isCustomCategory ? (
+                        <select 
+                          value={blogForm.category} 
+                          onChange={e => setBlogForm({ ...blogForm, category: e.target.value })} 
+                          className="form-select"
+                          style={{ flex: 1 }}
+                        >
+                          <option value="">Select Category</option>
+                          <option value="Nutrition Science">Nutrition Science</option>
+                          <option value="Wellness">Wellness</option>
+                          <option value="Behind the Scenes">Behind the Scenes</option>
+                          <option value="Beginner's Guide">Beginner's Guide</option>
+                          <option value="Health">Health</option>
+                          <option value="Sustainability">Sustainability</option>
+                        </select>
+                      ) : (
+                        <input 
+                          type="text"
+                          value={blogForm.category}
+                          onChange={e => setBlogForm({ ...blogForm, category: e.target.value })}
+                          className="form-input"
+                          style={{ flex: 1 }}
+                          placeholder="Enter new category..."
+                          autoFocus
+                        />
+                      )}
+                      <button 
+                        type="button"
+                        onClick={() => {
+                          const isCustom = !blogForm.isCustomCategory;
+                          setBlogForm({ 
+                            ...blogForm, 
+                            isCustomCategory: isCustom,
+                            category: isCustom ? '' : 'Wellness' 
+                          });
+                        }}
+                        className="admin-btn-secondary"
+                        style={{ padding: '8px', height: '42px', width: '42px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        title={blogForm.isCustomCategory ? "Back to list" : "Add custom category"}
+                      >
+                        {blogForm.isCustomCategory ? <X size={18} /> : <Plus size={18} />}
+                      </button>
+                    </div>
                   </div>
                   <div className="form-group"><label className="form-label">Read Time</label><input value={blogForm.readTime} onChange={e => setBlogForm({ ...blogForm, readTime: e.target.value })} className="form-input" placeholder="5 min read" /></div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div className="form-group"><label className="form-label">Tags (comma separated)</label><input value={blogForm.tags} onChange={e => setBlogForm({ ...blogForm, tags: e.target.value })} className="form-input" placeholder="Science, Health" /></div>
-                  <div className="form-group"><label className="form-label">Theme Color</label><input type="color" value={blogForm.color} onChange={e => setBlogForm({ ...blogForm, color: e.target.value })} style={{ width: '100%', height: '40px', border: '1px solid #eae7e1', borderRadius: '6px', cursor: 'pointer', padding: '4px' }} /></div>
-                </div>
+                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                   <div className="form-group"><label className="form-label">Theme Color</label><input type="color" value={blogForm.color} onChange={e => setBlogForm({ ...blogForm, color: e.target.value })} style={{ width: '100%', height: '40px', border: '1px solid #eae7e1', borderRadius: '6px', cursor: 'pointer', padding: '4px' }} /></div>
+                   <div className="form-group"><label className="form-label">Status</label>
+                     <select value={blogForm.status} onChange={e => setBlogForm({ ...blogForm, status: e.target.value })} className="form-select">
+                       <option value="Draft">Draft</option>
+                       <option value="Published">Published</option>
+                     </select>
+                   </div>
+                 </div>
                 <div className="form-group"><label className="form-label">Excerpt</label><textarea value={blogForm.excerpt} onChange={e => setBlogForm({ ...blogForm, excerpt: e.target.value })} className="form-input" style={{ resize: 'vertical', minHeight: '60px' }} placeholder="Short summary for the blog feed..." /></div>
                 <div className="form-group"><label className="form-label">Content</label><textarea value={blogForm.content} onChange={e => setBlogForm({ ...blogForm, content: e.target.value })} className="form-input" style={{ resize: 'vertical', minHeight: '100px' }} placeholder="Blog content..." /></div>
                 <div className="form-group">

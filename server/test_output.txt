@@ -1,0 +1,177 @@
+  console.log
+    --- Auth routes loaded ---
+
+      at Object.log (routes/auth.js:9:9)
+
+  console.log
+    Triggering translation script: /Users/renoroy/Desktop/H2O 2/server/scripts/translate_db.py
+
+      at log (utils/translate.js:10:11)
+
+  console.log
+    Triggering translation script: /Users/renoroy/Desktop/H2O 2/server/scripts/translate_db.py
+
+      at log (utils/translate.js:10:11)
+
+  console.log
+    Triggering translation script: /Users/renoroy/Desktop/H2O 2/server/scripts/translate_db.py
+
+      at log (utils/translate.js:10:11)
+
+  console.error
+    Create blog error: Error: Blog validation failed: category: Path `category` is required.
+        at ValidationError.inspect (/Users/renoroy/Desktop/H2O 2/server/node_modules/mongoose/lib/error/validation.js:52:26)
+        at formatValue (node:internal/util/inspect:877:19)
+        at inspect (node:internal/util/inspect:404:10)
+        at formatWithOptionsInternal (node:internal/util/inspect:2402:40)
+        at format (node:internal/util/inspect:2259:10)
+        at console.error (/Users/renoroy/Desktop/H2O 2/server/node_modules/@jest/console/build/index.js:288:48)
+        at error (/Users/renoroy/Desktop/H2O 2/server/routes/blogs.js:115:13)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+      errors: {
+        category: ValidatorError: Path `category` is required.
+            at validate (/Users/renoroy/Desktop/H2O 2/server/node_modules/mongoose/lib/schemaType.js:1440:13)
+            at SchemaString.SchemaType.doValidate (/Users/renoroy/Desktop/H2O 2/server/node_modules/mongoose/lib/schemaType.js:1424:7)
+            at /Users/renoroy/Desktop/H2O 2/server/node_modules/mongoose/lib/document.js:3134:18
+            at processTicksAndRejections (node:internal/process/task_queues:85:11) {
+          properties: [Object],
+          kind: 'required',
+          path: 'category',
+          value: undefined,
+          reason: undefined,
+          [Symbol(mongoose#validatorError)]: true
+        }
+      },
+      _message: 'Blog validation failed'
+    }
+
+      113 |     res.status(201).json(blog);
+      114 |   } catch (err) {
+    > 115 |     console.error('Create blog error:', err);
+          |             ^
+      116 |     res.status(500).json({ message: 'Server error.' });
+      117 |   }
+      118 | });
+
+      at error (routes/blogs.js:115:13)
+
+PASS tests/blogs.test.js
+  Blog Category Logic Tests
+    ✓ should create a blog with a manually typed custom category (44 ms)
+    ✓ should update a blog to another manually typed custom category (16 ms)
+    ✓ should allow using an existing "Early Data" category string (41 ms)
+    ✓ should fail to create a blog without a category (since it is required) (12 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        2.071 s, estimated 3 s
+Ran all test suites matching tests/blogs.test.js.
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script: Processing Blogs...
+    Processing Products...
+    Processing Categories...
+    Processing Pages...
+    Translation process completed.
+    ".
+
+      13 |
+      14 |   pythonProcess.stdout.on('data', (data) => {
+    > 15 |     console.log(`Translation Script: ${data}`);
+         |             ^
+      16 |   });
+      17 |
+      18 |   pythonProcess.stderr.on('data', (data) => {
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at Socket.log (utils/translate.js:15:13)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script: Processing Blogs...
+    Processing Products...
+    Processing Categories...
+    Processing Pages...
+    Translation process completed.
+    ".
+
+      13 |
+      14 |   pythonProcess.stdout.on('data', (data) => {
+    > 15 |     console.log(`Translation Script: ${data}`);
+         |             ^
+      16 |   });
+      17 |
+      18 |   pythonProcess.stderr.on('data', (data) => {
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at Socket.log (utils/translate.js:15:13)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script: Processing Blogs...
+    Processing Products...
+    Processing Categories...
+    Processing Pages...
+    Translation process completed.
+    ".
+
+      13 |
+      14 |   pythonProcess.stdout.on('data', (data) => {
+    > 15 |     console.log(`Translation Script: ${data}`);
+         |             ^
+      16 |   });
+      17 |
+      18 |   pythonProcess.stderr.on('data', (data) => {
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at Socket.log (utils/translate.js:15:13)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script finished with code 0".
+
+      21 |
+      22 |   pythonProcess.on('close', (code) => {
+    > 23 |     console.log(`Translation Script finished with code ${code}`);
+         |             ^
+      24 |   });
+      25 | };
+      26 |
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at ChildProcess.log (utils/translate.js:23:13)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script finished with code 0".
+
+      21 |
+      22 |   pythonProcess.on('close', (code) => {
+    > 23 |     console.log(`Translation Script finished with code ${code}`);
+         |             ^
+      24 |   });
+      25 | };
+      26 |
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at ChildProcess.log (utils/translate.js:23:13)
+
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Translation Script finished with code 0".
+
+      21 |
+      22 |   pythonProcess.on('close', (code) => {
+    > 23 |     console.log(`Translation Script finished with code ${code}`);
+         |             ^
+      24 |   });
+      25 | };
+      26 |
+
+      at console.log (node_modules/@jest/console/build/index.js:311:10)
+      at ChildProcess.log (utils/translate.js:23:13)
+

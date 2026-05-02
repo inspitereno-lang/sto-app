@@ -119,7 +119,7 @@ export default function BlogPage() {
                           >
                             <span className="blog-filter-btn__text">{tag}</span>
                             <span className="blog-filter-btn__count">
-                              {tag === allTag ? blogs.length : blogs.filter(b => (getTranslatedContent(b).tags?.[0] || 'Uncategorized') === tag).length}
+                              {tag === allTag ? blogs.length : blogs.filter(b => (getTranslatedContent(b).category || 'Uncategorized') === tag).length}
                             </span>
                           </button>
                         </li>
@@ -162,15 +162,15 @@ export default function BlogPage() {
                               className="blog-card__img-overlay"
                               style={{ background: `linear-gradient(to top, #1a1a1acc 0%, transparent 60%)` }}
                             />
-                            {content.tags && content.tags[0] && (
+                            {content.category && (
                               <span 
                                 className="blog-card__tag"
                                 style={{
-                                  '--tag-bg': TAG_COLORS[blog.tags[0]]?.backgroundColor || '#EAF4EE',
-                                  '--tag-color': TAG_COLORS[blog.tags[0]]?.color || '#0F5C30'
+                                  '--tag-bg': '#EAF4EE',
+                                  '--tag-color': '#0F5C30'
                                 }}
                               >
-                                {content.tags[0]}
+                                {content.category}
                               </span>
                             )}
                           </div>

@@ -100,7 +100,7 @@ router.post('/', adminAuth, async (req, res) => {
       author: author || 'STO Team',
       status: status || 'Draft',
       tags: tags || [],
-      category: category || 'Wellness',
+      category,
       readTime: readTime || '5 min read',
       date: date || '',
       color: color || '#1B3A2D',

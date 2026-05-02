@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Clock, ArrowLeft, Share2, Link as LinkIcon, Mail, Loader2 } from 'lucide-react';
+import { ArrowLeft, Share2, Link as LinkIcon, Mail, Loader2 } from 'lucide-react';
 import { api } from '../config/api';
 import { useLanguage } from '../context/LanguageContext';
-import { TAG_COLORS } from '../data/articles';
 import './BlogPostPage.css';
 
 export default function BlogPostPage() {
@@ -70,8 +69,6 @@ export default function BlogPostPage() {
     category: trans.category || blog.category
   };
 
-  const tag = blog.tags?.[0] || 'Uncategorized';
-  const tagStyle = TAG_COLORS[tag] || { backgroundColor: '#f0f0f0', color: '#333' };
   const blogColor = blog.color || '#1a1a1a'; // Use blog color from DB or default
 
   return (
@@ -104,8 +101,8 @@ export default function BlogPostPage() {
             transition={{ duration: 0.6 }}
             className="blog-post-hero__meta-top"
           >
-            <span className="blog-post-tag" style={tagStyle}>
-              {tag}
+            <span className="blog-post-tag" style={{ backgroundColor: '#EAF4EE', color: '#0F5C30' }}>
+              {content.category}
             </span>
           </motion.div>
           
