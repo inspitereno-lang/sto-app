@@ -30,7 +30,7 @@ const blogSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    default: 'Wellness',
+    required: true,
   },
   readTime: {
     type: String,

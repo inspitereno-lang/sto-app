@@ -42,11 +42,11 @@ export default function BlogPage() {
   };
 
   const allTag = bp.all || 'All';
-  const tags = [allTag, ...new Set(blogs.map(b => getTranslatedContent(b).tags?.[0] || 'Uncategorized'))];
+  const tags = [allTag, ...new Set(blogs.map(b => getTranslatedContent(b).category || 'Uncategorized'))];
   
   const filteredBlogs = activeTag === 'all' 
     ? blogs 
-    : blogs.filter(b => (getTranslatedContent(b).tags?.[0] || 'Uncategorized') === activeTag);
+    : blogs.filter(b => (getTranslatedContent(b).category || 'Uncategorized') === activeTag);
 
   return (
     <main className="blog-page">
@@ -175,11 +175,6 @@ export default function BlogPage() {
                             )}
                           </div>
                           <div className="blog-card__body">
-                            <div className="blog-card__meta">
-                              <span className="blog-card__date">{blog.date || new Date(blog.createdAt).toLocaleDateString(language === 'fi' ? 'fi-FI' : 'en-US', { month: 'long', year: 'numeric' })}</span>
-                              <span className="blog-card__sep">•</span>
-                              <span className="blog-card__read-time">{blog.readTime || '5 min read'}</span>
-                            </div>
                             <h2 className="blog-card__title">{content.title}</h2>
                             <p className="blog-card__excerpt">{content.excerpt}</p>
                             <div className="blog-card__cta">

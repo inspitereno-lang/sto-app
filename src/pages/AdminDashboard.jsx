@@ -1119,12 +1119,10 @@ export default function AdminDashboard() {
                       onChange={e => setBlogForm({ ...blogForm, category: e.target.value })} 
                       className="form-select"
                     >
-                      <option value="Nutrition Science">Nutrition Science</option>
-                      <option value="Wellness">Wellness</option>
-                      <option value="Behind the Scenes">Behind the Scenes</option>
-                      <option value="Beginner's Guide">Beginner's Guide</option>
-                      <option value="Health">Health</option>
-                      <option value="Sustainability">Sustainability</option>
+                      <option value="">Select Category</option>
+                      {categories.map(cat => (
+                        <option key={cat.id || cat._id} value={cat.name}>{cat.name}</option>
+                      ))}
                     </select>
                   </div>
                   <div className="form-group"><label className="form-label">Read Time</label><input value={blogForm.readTime} onChange={e => setBlogForm({ ...blogForm, readTime: e.target.value })} className="form-input" placeholder="5 min read" /></div>

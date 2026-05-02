@@ -58,6 +58,7 @@ def translate_blogs():
                 title_trans = translate_text(blog.get('title'), lang)
                 content_trans = translate_text(blog.get('content'), lang)
                 excerpt_trans = translate_text(blog.get('excerpt'), lang)
+                category_trans = translate_text(blog.get('category'), lang)
                 
                 # Translate tags if they exist
                 tags = blog.get('tags', [])
@@ -68,6 +69,7 @@ def translate_blogs():
                         'title': title_trans,
                         'content': content_trans,
                         'excerpt': excerpt_trans,
+                        'category': category_trans,
                         'tags': tags_trans
                     }
                     updated = True
