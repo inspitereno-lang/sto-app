@@ -366,6 +366,21 @@ const seedData = [
       stayInformedSub: 'Get our latest articles on microgreens science, recipes, and Nordic wellness delivered to your inbox.',
       emailPlaceholder: 'Your email address',
       subscribe: 'Subscribe'
+    },
+    translations: {
+      fi: {
+        label: 'Terveys ja elämäntapa',
+        title: 'STO Journal',
+        sub: 'Tieteellisiä näkemyksiä mikrovihreistä, ravinnosta ja tietoisen pohjoismaisen elämän taiteesta.',
+        filterTitle: 'Suodata aiheen mukaan',
+        all: 'Kaikki',
+        emptyState: 'Tästä aiheesta ei löytynyt artikkeleita.',
+        readArticle: 'Lue artikkeli',
+        stayInformed: 'Pysy ajan tasalla',
+        stayInformedSub: 'Tilaa uusimmat artikkelimme mikrovihreiden tieteestä, resepteistä ja pohjoismaisesta hyvinvoinnista suoraan sähköpostiisi.',
+        emailPlaceholder: 'Sähköpostiosoitteesi',
+        subscribe: 'Tilaa'
+      }
     }
   },
   {
@@ -489,9 +504,14 @@ async function seed() {
     console.log('Connected to DB');
 
     for (const data of seedData) {
+      const update = { content: data.content };
+      if (data.translations) {
+        update.translations = data.translations;
+      }
+      
       await PageContent.findOneAndUpdate(
         { page: data.page },
-        { content: data.content },
+        update,
         { upsert: true, new: true }
       );
       console.log(`Seeded page: ${data.page}`);

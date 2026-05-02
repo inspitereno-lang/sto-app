@@ -31,21 +31,22 @@ export default function BlogPage() {
   }, [language]);
 
 
-  const allTag = bp.all || 'All';
-  const tags = [allTag, ...new Set(blogs.map(b => b.tags?.[0] || 'Uncategorized'))];
-  
-  const filteredBlogs = activeTag === 'all' 
-    ? blogs 
-    : blogs.filter(b => (b.tags?.[0] || 'Uncategorized') === activeTag);
-
   const getTranslatedContent = (blog) => {
     const trans = blog.translations?.[language];
     return {
       title: trans?.title || blog.title,
       excerpt: trans?.excerpt || blog.excerpt,
-      category: trans?.category || blog.category
+      category: trans?.category || blog.category,
+      tags: trans?.tags || blog.tags
     };
   };
+
+  const allTag = bp.all || 'All';
+  const tags = [allTag, ...new Set(blogs.map(b => getTranslatedContent(b).tags?.[0] || 'Uncategorized'))];
+  
+  const filteredBlogs = activeTag === 'all' 
+    ? blogs 
+    : blogs.filter(b => (getTranslatedContent(b).tags?.[0] || 'Uncategorized') === activeTag);
 
   return (
     <main className="blog-page">
@@ -118,7 +119,7 @@ export default function BlogPage() {
                           >
                             <span className="blog-filter-btn__text">{tag}</span>
                             <span className="blog-filter-btn__count">
-                              {tag === allTag ? blogs.length : blogs.filter(b => (b.tags?.[0] || 'Uncategorized') === tag).length}
+                              {tag === allTag ? blogs.length : blogs.filter(b => (getTranslatedContent(b).tags?.[0] || 'Uncategorized') === tag).length}
                             </span>
                           </button>
                         </li>
@@ -161,7 +162,7 @@ export default function BlogPage() {
                               className="blog-card__img-overlay"
                               style={{ background: `linear-gradient(to top, #1a1a1acc 0%, transparent 60%)` }}
                             />
-                            {blog.tags && blog.tags[0] && (
+                            {content.tags && content.tags[0] && (
                               <span 
                                 className="blog-card__tag"
                                 style={{
@@ -169,7 +170,7 @@ export default function BlogPage() {
                                   '--tag-color': TAG_COLORS[blog.tags[0]]?.color || '#0F5C30'
                                 }}
                               >
-                                {blog.tags[0]}
+                                {content.tags[0]}
                               </span>
                             )}
                           </div>

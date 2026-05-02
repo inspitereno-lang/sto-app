@@ -34,7 +34,12 @@ def translate_text(text, target_lang):
     api_lang = LANG_MAP.get(target_lang, target_lang)
     
     try:
-        return GoogleTranslator(source='auto', target=api_lang).translate(text)
+        translated = GoogleTranslator(source='auto', target=api_lang).translate(text)
+        if translated:
+            # Post-process: Replace H2O with STO (case-insensitive)
+            import re
+            translated = re.sub(r'h2o', 'STO', translated, flags=re.IGNORECASE)
+        return translated
     except Exception as e:
         print(f"Error translating to {target_lang}: {e}")
         return None
@@ -54,11 +59,16 @@ def translate_blogs():
                 content_trans = translate_text(blog.get('content'), lang)
                 excerpt_trans = translate_text(blog.get('excerpt'), lang)
                 
+                # Translate tags if they exist
+                tags = blog.get('tags', [])
+                tags_trans = [translate_text(tag, lang) for tag in tags]
+                
                 if title_trans:
                     translations[lang] = {
                         'title': title_trans,
                         'content': content_trans,
-                        'excerpt': excerpt_trans
+                        'excerpt': excerpt_trans,
+                        'tags': tags_trans
                     }
                     updated = True
                     # Small delay to prevent rate limiting
