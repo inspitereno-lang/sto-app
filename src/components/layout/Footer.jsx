@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="footer__col-title">{f.policies || f.service}</div>
           <Link to="/terms" className="footer__link">{f.terms}</Link>
           <Link to="/privacy" className="footer__link">{f.privacy}</Link>
-          <Link to="/returns" className="footer__link">Refund & Return Policy</Link>
+          <Link to="/returns" className="footer__link">{f.returns || 'Refund & Return Policy'}</Link>
         </div>
 
         {/* CTA Section */}
@@ -59,7 +59,7 @@ export default function Footer() {
         <span className="footer__copy">{f.copy || f.copyright}</span>
         <div className="footer__bottom-links">
           <Link to="/privacy" className="footer__bottom-link">{f.privacy || 'Privacy'}</Link>
-          <Link to="/returns" className="footer__bottom-link">Refund & Return Policy</Link>
+          <Link to="/returns" className="footer__bottom-link">{f.returns || 'Refund & Return Policy'}</Link>
           <Link to="/terms" className="footer__bottom-link">{f.terms || 'Terms'}</Link>
           <Link to="/admin" className="footer__bottom-link">{f.admin || 'Admin'}</Link>
         </div>

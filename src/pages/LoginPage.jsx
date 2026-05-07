@@ -137,7 +137,7 @@ export default function LoginPage() {
                   </div>
                 )}
                 <div className="form-group">
-                  <label className="form-label" htmlFor="login-email">Username or Email</label>
+                  <label className="form-label" htmlFor="login-email">{a.usernameOrEmail || 'Username or Email'}</label>
                   <input id="login-email" type="text" value={form.email} onChange={e=>set('email',e.target.value)}
                     placeholder="reno or reno@example.com" className="form-input" required/>
                 </div>

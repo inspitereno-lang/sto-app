@@ -81,12 +81,14 @@ function AppShell() {
 }
 
 function NotFound() {
+  const { t } = useLanguage();
+  const nf = t.not_found || {};
   return (
     <main style={{ paddingTop:'120px', minHeight:'70vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'20px', textAlign:'center', background:'#FAFAF8' }}>
       <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'6rem', color:'#e0ddd6', fontWeight:300 }}>404</div>
-      <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'2rem', color:'#0F2F24', fontWeight:400 }}>Page not found.</h2>
-      <p style={{ color:'#9a9a9a', fontSize:'15px', maxWidth:'360px' }}>The page you're looking for doesn't exist. Let's get you back on track.</p>
-      <a href="/" className="btn btn-primary">Return Home</a>
+      <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'2rem', color:'#0F2F24', fontWeight:400 }}>{nf.title || 'Page not found.'}</h2>
+      <p style={{ color:'#9a9a9a', fontSize:'15px', maxWidth:'360px' }}>{nf.sub || "The page you're looking for doesn't exist. Let's get you back on track."}</p>
+      <a href="/" className="btn btn-primary">{nf.btn || 'Return Home'}</a>
     </main>
   );
 }

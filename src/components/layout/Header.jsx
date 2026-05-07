@@ -152,19 +152,19 @@ export default function Header() {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="header__user-info">
-                      <div className="header__user-name">{user?.username || 'Customer'}</div>
+                      <div className="header__user-name">{user?.username || n.customer || 'Asiakas'}</div>
                     </div>
                     <div className="header__user-divider" />
                     {user?.role === 'admin' && (
                       <Link to="/admin" className="header__user-link" onClick={() => setUserOpen(false)}>
-                        <Shield size={14} /> Admin Dashboard
+                        <Shield size={14} /> {n.adminDashboard || 'Hallintapaneeli'}
                       </Link>
                     )}
                     <Link to="/orders" className="header__user-link" onClick={() => setUserOpen(false)}>
                       <Package size={14} /> {t.nav.account}
                     </Link>
                     <button className="header__user-link logout" onClick={handleLogout}>
-                      <LogOut size={14} /> Logout
+                      <LogOut size={14} /> {n.logout || 'Logout'}
                     </button>
                   </motion.div>
                 )}
@@ -220,7 +220,7 @@ export default function Header() {
                   {t.nav.cart} {count > 0 && <span className="mobile-badge">{count}</span>}
                 </Link>
                 <Link to={localStorage.getItem('token') ? '/orders' : '/account'} className="mobile-menu__link">
-                  {localStorage.getItem('token') ? 'My Profile' : (n.account || 'Account')}
+                  {localStorage.getItem('token') ? (n.profile || 'My Profile') : (n.account || 'Account')}
                 </Link>
               </div>
 

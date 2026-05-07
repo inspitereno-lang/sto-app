@@ -59,7 +59,7 @@ export default function BlogPage() {
           transition={{ duration: 0.7 }}
         >
           <div className="blog-hero__label">{bp.label || 'Health & Lifestyle'}</div>
-          <h1 className="blog-hero__title">{bp.title || 'The STO Journal'}</h1>
+          <h1 className="blog-hero__title">{bp.title || 'STO Journal'}</h1>
           <p className="blog-hero__sub">
             {bp.sub || 'Science-backed insights on microgreens, nutrition, and the art of mindful Nordic living.'}
           </p>
@@ -136,7 +136,7 @@ export default function BlogPage() {
             {loading ? (
               <div className="blog-loading">
                 <Loader2 size={40} className="animate-spin" />
-                <p>Loading journal...</p>
+                <p>{bp.loading || 'Loading journal...'}</p>
               </div>
             ) : filteredBlogs.length === 0 ? (
               <div className="blog-empty-state">{bp.emptyState || 'No articles found for this topic.'}</div>

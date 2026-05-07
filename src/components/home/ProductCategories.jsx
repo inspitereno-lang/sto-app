@@ -8,8 +8,9 @@ import { useLanguage } from '../../context/LanguageContext';
 // Removed hardcoded fallback categories
 
 export default function ProductCategories() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const c = { ...(t.categories || {}), ...(t.home_categories || {}) };
+  const ps = t.products_section || {};
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
@@ -20,14 +21,17 @@ export default function ProductCategories() {
           const json = await res.json();
           const data = json.data || json;
           if (data && data.length > 0) {
-            setCats(data.map(cat => ({
-              key: cat.slug || cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-              name: cat.name,
-              description: cat.description,
-              img: cat.image || 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80',
-              color: cat.color || '#1B3A2D',
-              link: cat.link || `/shop?cat=${cat.slug}`,
-            })));
+            setCats(data.map(cat => {
+              const trans = cat.translations?.[language] || {};
+              return {
+                key: cat.slug || cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                name: trans.name || cat.name,
+                description: trans.description || cat.description,
+                img: cat.image || 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80',
+                color: cat.color || '#1B3A2D',
+                link: cat.link || `/shop?cat=${cat.slug}`,
+              };
+            }));
           }
         }
       } catch (err) {
@@ -35,10 +39,10 @@ export default function ProductCategories() {
       }
     };
     fetchCategories();
-  }, []);
+  }, [language]);
 
   return (
-    <section className="section" style={{ background: '#F3F0EA' }}>
+    <section className="section" style={{ background: '#F3F0EA', position: 'relative' }}>
       <div className="container">
         <motion.div
           style={styles.header}
@@ -47,9 +51,9 @@ export default function ProductCategories() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-label">{c.label}</div>
+          <div className="section-label">{ps.title || c.label || 'WHAT WE OFFER'}</div>
           <h2 className="section-title" style={{ whiteSpace: 'pre-line', fontSize: cats.length > 3 ? '2.5rem' : 'clamp(2rem, 4vw, 3.5rem)' }}>
-            {cats.length > 2 ? c.title.replace(/Two|2/i, cats.length) : c.title}
+            {ps.subtitle || (cats.length > 2 ? c.title?.replace(/Two|2/i, cats.length) : c.title) || 'Puhdasta & Ensiluokkaista.'}
           </h2>
         </motion.div>
 
@@ -86,7 +90,7 @@ export default function ProductCategories() {
                         <div style={styles.cardLabel}>{cat.name}</div>
                         <p style={styles.cardDesc}>{cat.description}</p>
                         <div style={styles.cardLink}>
-                          Shop Now <ArrowRight size={14} />
+                          {t.blog_page?.shopNow || 'Shop Now'} <ArrowRight size={14} />
                         </div>
                       </div>
                     </Link>

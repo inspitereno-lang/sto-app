@@ -8,7 +8,7 @@ export default function Sustainability() {
   const s = { ...(t.sustainability || {}), ...(t.home_sustainability || {}) };
 
   return (
-    <section className="section" style={{ background: '#F3F0EA', overflow: 'hidden' }}>
+    <section className="section" style={{ background: '#F3F0EA', overflow: 'hidden', position: 'relative' }}>
       <div className="container res-grid-2">
         <motion.div style={styles.text}
           initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}

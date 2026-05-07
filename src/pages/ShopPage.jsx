@@ -6,7 +6,6 @@ import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ProductCard from '../components/ui/ProductCard';
 
-const CATS = ['all', 'microgreens', 'candles'];
 
 export default function ShopPage() {
   const { language, t } = useLanguage();
@@ -43,7 +42,7 @@ export default function ShopPage() {
       }
     };
     fetchData();
-  }, []);
+  }, [language]);
 
   const getCatName = (catSlug) => {
     if (catSlug === 'all') return s.all || 'All';
@@ -80,7 +79,7 @@ export default function ShopPage() {
   };
 
   return (
-    <main style={{ paddingTop: '80px', minHeight: '100vh', background: '#FAFAF8' }}>
+    <main style={{ paddingTop: '80px', minHeight: '100vh', background: '#FAFAF8', position: 'relative' }}>
       {/* Hero banner */}
       <div style={styles.banner}>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -95,10 +94,14 @@ export default function ShopPage() {
         <div style={styles.controls}>
           {/* Category filters */}
           <div style={styles.cats}>
-            {CATS.map(c => (
-              <button key={c} onClick={() => handleCat(c)}
-                style={{ ...styles.catBtn, ...(cat === c ? styles.catBtnActive : {}) }}>
-                {getCatName(c)}
+            <button onClick={() => handleCat('all')}
+              style={{ ...styles.catBtn, ...(cat === 'all' ? styles.catBtnActive : {}) }}>
+              {getCatName('all')}
+            </button>
+            {categories.map(c => (
+              <button key={c.slug} onClick={() => handleCat(c.slug)}
+                style={{ ...styles.catBtn, ...(cat === c.slug ? styles.catBtnActive : {}) }}>
+                {getCatName(c.slug)}
               </button>
             ))}
           </div>
@@ -170,7 +173,8 @@ const styles = {
   controls: { display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap' },
   cats: { display: 'flex', gap: '8px', flexWrap: 'wrap' },
   catBtn: {
-    padding: '9px 20px', borderRadius: '99px', border: '1.5px solid #e0ddd6',
+    padding: '9px 20px', borderRadius: '99px',
+    borderWidth: '1.5px', borderStyle: 'solid', borderColor: '#e0ddd6',
     fontFamily: "'Inter',sans-serif", fontSize: '13px', fontWeight: 400, color: '#6b6b6b',
     background: '#ffffff', cursor: 'pointer', transition: 'all 0.2s',
   },

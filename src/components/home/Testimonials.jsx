@@ -11,7 +11,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="section" style={{ background:'#F3F0EA' }}>
+    <section className="section" style={{ background:'#F3F0EA', position: 'relative' }}>
       <div className="container">
         <motion.div style={{ textAlign:'center', marginBottom:'56px' }}
           initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.6 }}
