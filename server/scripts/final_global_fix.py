@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../.env'))
 
 MONGO_URI = os.getenv("MONGO_URI")
+if MONGO_URI: MONGO_URI = MONGO_URI.strip()
 client = MongoClient(MONGO_URI)
 db = client.get_database()
 
