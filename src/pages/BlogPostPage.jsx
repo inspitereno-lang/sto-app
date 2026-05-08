@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Share2, Link as LinkIcon, Mail, Loader2 } from 'lucide-react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { api } from '../config/api';
 import { useLanguage } from '../context/LanguageContext';
 import './BlogPostPage.css';
@@ -125,14 +125,6 @@ export default function BlogPostPage() {
               <div className="blog-post-author__avatar">STO</div>
               <div className="blog-post-author__info">
                 <span className="blog-post-author__name">{blog.author || 'STO Editorial Team'}</span>
-              </div>
-            </div>
-            
-            <div className="blog-post-share">
-              <span className="blog-post-share__label"><Share2 size={14} /> {bp.share || 'Share'}</span>
-              <div className="blog-post-share__links">
-                <button aria-label="Copy Link" onClick={() => navigator.clipboard.writeText(window.location.href)}><LinkIcon size={16} /></button>
-                <button aria-label="Share via Email" onClick={() => window.location.href = `mailto:?subject=${encodeURIComponent(content.title)}`}><Mail size={16} /></button>
               </div>
             </div>
           </motion.div>
