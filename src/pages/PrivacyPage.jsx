@@ -368,7 +368,7 @@ export default function PrivacyPage() {
             <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #eae7e1' }}>
               <p>
                 Email: <a href="mailto:admin@saanatuatanto.com" style={styles.link}>admin@saanatuatanto.com</a><br />
-                Website: <a href="https://www.h2o.fi" target="_blank" rel="noreferrer" style={styles.link}>www.h2o.fi</a>
+                Website: <a href="https://saanatuotanto.com/" target="_blank" rel="noreferrer" style={styles.link}>https://saanatuotanto.com/</a>
               </p>
             </div>
           </div>

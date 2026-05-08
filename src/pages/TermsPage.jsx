@@ -6,7 +6,7 @@ const content = {
     label: 'Legal',
     title: 'Terms and Conditions',
     lastUpdated: 'Last updated: 25-04-2026',
-    welcome: 'Welcome to www.h2o.fi',
+    welcome: 'Welcome to https://saanatuotanto.com/',
     intro: 'These Terms and Conditions outline the rules and regulations for the use of the website operated by Saana Tuotanto Oy.',
     consent: 'By accessing this website, you agree to comply with these Terms and Conditions. If you do not agree, please do not use our website.',
     sections: [
@@ -30,7 +30,7 @@ const content = {
     label: 'Lakiasiat',
     title: 'Käyttöehdot',
     lastUpdated: 'Viimeksi päivitetty: 25.04.2026',
-    welcome: 'Tervetuloa osoitteeseen www.h2o.fi',
+    welcome: 'Tervetuloa osoitteeseen https://saanatuotanto.com/',
     intro: 'Nämä käyttöehdot määrittelevät Saana Tuotanto Oy:n operoiman verkkosivuston käytön säännöt ja määräykset.',
     consent: 'Käyttämällä tätä verkkosivustoa hyväksyt nämä käyttöehdot. Jos et hyväksy niitä, älä käytä verkkosivustoamme.',
     sections: [
@@ -54,7 +54,7 @@ const content = {
     label: 'Juridik',
     title: 'Villkor',
     lastUpdated: 'Senast uppdaterad: 25-04-2026',
-    welcome: 'Välkommen till www.h2o.fi',
+    welcome: 'Välkommen till https://saanatuotanto.com/',
     intro: 'Dessa villkor fastställer reglerna och föreskrifterna för användningen av webbplatsen som drivs av Saana Tuotanto Oy.',
     consent: 'Genom att använda denna webbplats godkänner du dessa villkor. Om du inte godkänner dem, vänligen använd inte vår webbplats.',
     sections: [
@@ -78,7 +78,7 @@ const content = {
     label: 'Juridisk',
     title: 'Vilkår og betingelser',
     lastUpdated: 'Sist oppdatert: 25.04.2026',
-    welcome: 'Velkommen til www.h2o.fi',
+    welcome: 'Velkommen til https://saanatuotanto.com/',
     intro: 'Disse vilkårene og betingelsene fastsetter reglene for bruk av nettstedet som drives av Saana Tuotanto Oy.',
     consent: 'Ved å bruke dette nettstedet godtar du disse vilkårene. Hvis du ikke er enig, vennligst ikke bruk nettstedet vårt.',
     sections: [
@@ -102,7 +102,7 @@ const content = {
     label: 'Juridisk',
     title: 'Vilkår og betingelser',
     lastUpdated: 'Sidst opdateret: 25.04.2026',
-    welcome: 'Velkommen til www.h2o.fi',
+    welcome: 'Velkommen til https://saanatuotanto.com/',
     intro: 'Disse vilkår og betingelser fastlægger reglerne for brug af webstedet, som drives af Saana Tuotanto Oy.',
     consent: 'Ved at bruge dette websted accepterer du disse vilkår. Hvis du ikke er enig, bedes du ikke bruge vores websted.',
     sections: [
@@ -126,7 +126,7 @@ const content = {
     label: 'Juriidiline teave',
     title: 'Kasutustingimused',
     lastUpdated: 'Viimati uuendatud: 25.04.2026',
-    welcome: 'Tere tulemast veebilehele www.h2o.fi',
+    welcome: 'Tere tulemast veebilehele https://saanatuotanto.com/',
     intro: 'Need kasutustingimused sätestavad Saana Tuotanto Oy hallatava veebilehe kasutamise reeglid ja eeskirjad.',
     consent: 'Sellele veebilehele sisenedes nõustute nende kasutustingimustega. Kui te ei nõustu, palun ärge kasutage meie veebilehte.',
     sections: [
@@ -150,7 +150,7 @@ const content = {
     label: 'Rechtliches',
     title: 'Allgemeine Geschäftsbedingungen',
     lastUpdated: 'Zuletzt aktualisiert: 25.04.2026',
-    welcome: 'Willkommen auf www.h2o.fi',
+    welcome: 'Willkommen auf https://saanatuotanto.com/',
     intro: 'Diese Allgemeinen Geschäftsbedingungen legen die Regeln für die Nutzung der von Saana Tuotanto Oy betriebenen Website fest.',
     consent: 'Durch den Zugriff auf diese Website erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie nicht einverstanden sind, nutzen Sie unsere Website bitte nicht.',
     sections: [
@@ -174,7 +174,7 @@ const content = {
     label: 'Juridisch',
     title: 'Algemene voorwaarden',
     lastUpdated: 'Laatst bijgewerkt: 25-04-2026',
-    welcome: 'Welkom op www.h2o.fi',
+    welcome: 'Welkom op https://saanatuotanto.com/',
     intro: 'Deze algemene voorwaarden beschrijven de regels voor het gebruik van de website beheerd door Saana Tuotanto Oy.',
     consent: 'Door deze website te bezoeken, gaat u akkoord met deze voorwaarden. Als u niet akkoord gaat, gebruik onze website dan niet.',
     sections: [
@@ -198,7 +198,7 @@ const content = {
     label: 'Juridique',
     title: 'Conditions générales',
     lastUpdated: 'Dernière mise à jour : 25-04-2026',
-    welcome: 'Bienvenue sur www.h2o.fi',
+    welcome: 'Bienvenue sur https://saanatuotanto.com/',
     intro: 'Ces conditions générales définissent les règles d\'utilisation du site web exploité par Saana Tuotanto Oy.',
     consent: 'En accédant à ce site, vous acceptez ces conditions. Si vous n\'êtes pas d\'accord, veuillez ne pas utiliser notre site.',
     sections: [
@@ -222,7 +222,7 @@ const content = {
     label: 'Prawne',
     title: 'Regulamin',
     lastUpdated: 'Ostatnia aktualizacja: 25.04.2026',
-    welcome: 'Witaj na www.h2o.fi',
+    welcome: 'Witaj na https://saanatuotanto.com/',
     intro: 'Niniejszy regulamin określa zasady korzystania z witryny internetowej obsługiwanej przez Saana Tuotanto Oy.',
     consent: 'Korzystając z tej witryny, akceptujesz niniejszy regulamin. Jeśli się nie zgadzasz, prosimy o opuszczenie strony.',
     sections: [
@@ -246,7 +246,7 @@ const content = {
     label: 'Legal',
     title: 'Términos y condiciones',
     lastUpdated: 'Última actualización: 25-04-2026',
-    welcome: 'Bienvenido a www.h2o.fi',
+    welcome: 'Bienvenido a https://saanatuotanto.com/',
     intro: 'Estos términos y condiciones describen las reglas para el uso del sitio web operado por Saana Tuotanto Oy.',
     consent: 'Al acceder a este sitio web, acepta estos términos. Si no está de acuerdo, no utilice nuestro sitio web.',
     sections: [
@@ -270,7 +270,7 @@ const content = {
     label: 'Legale',
     title: 'Termini e condizioni',
     lastUpdated: 'Ultimo aggiornamento: 25-04-2026',
-    welcome: 'Benvenuti su www.h2o.fi',
+    welcome: 'Benvenuti su https://saanatuotanto.com/',
     intro: 'Questi termini e condizioni delineano le regole per l\'utilizzo del sito web gestito da Saana Tuotanto Oy.',
     consent: 'Accedendo a questo sito, accetti questi termini. Se non sei d\'accordo, ti preghiamo di non utilizzare il sito.',
     sections: [
@@ -294,7 +294,7 @@ const content = {
     label: 'Legal',
     title: 'Termos e Condições',
     lastUpdated: 'Última atualização: 25-04-2026',
-    welcome: 'Bem-vindo a www.h2o.fi',
+    welcome: 'Bem-vindo a https://saanatuotanto.com/',
     intro: 'Estes termos e condições descrevem as regras para o uso do site operado pela Saana Tuotanto Oy.',
     consent: 'Ao aceder a este site, concorda com estes termos. Se não concordar, não utilize o nosso site.',
     sections: [
@@ -318,7 +318,7 @@ const content = {
     label: 'Νομικά',
     title: 'Όροι και Προϋποθέσεις',
     lastUpdated: 'Τελευταία ενημέρωση: 25-04-2026',
-    welcome: 'Καλώς ήρθατε στο www.h2o.fi',
+    welcome: 'Καλώς ήρθατε στο https://saanatuotanto.com/',
     intro: 'Αυτοί οι όροι περιγράφουν τους κανόνες για τη χρήση του ιστότοπου της Saana Tuotanto Oy.',
     consent: 'Με την πρόσβαση σε αυτόν τον ιστότοπο, συμφωνείτε με αυτούς τους όρους. Εάν διαφωνείτε, μην χρησιμοποιείτε τον ιστότοπο.',
     sections: [
@@ -342,7 +342,7 @@ const content = {
     label: 'Yasal',
     title: 'Şartlar και Koşullar',
     lastUpdated: 'Son güncelleme: 25-04-2026',
-    welcome: 'www.h2o.fi adresine hoş geldiniz',
+    welcome: 'https://saanatuotanto.com/ adresine hoş geldiniz',
     intro: 'Bu şartlar ve koşullar, Saana Tuotanto Oy tarafından işletilen web sitesinin kullanım kurallarını belirler.',
     consent: 'Bu web sitesine erişerek bu şartları kabul etmiş olursunuz. Kabul etmiyorsanız lütfen sitemizi kullanmayın.',
     sections: [
@@ -366,7 +366,7 @@ const content = {
     label: '法務',
     title: '利用規約',
     lastUpdated: '最終更新日: 2026年4月25日',
-    welcome: 'www.h2o.fi へようこそ',
+    welcome: 'https://saanatuotanto.com/ へようこそ',
     intro: '本利用規約は、Saana Tuotanto Oyが運営するウェブサイトの利用に関する規則を定めたものです。',
     consent: '本サイトを利用することで、これらの規約に同意したものとみなされます。同意いただけない場合は利用をお控えください。',
     sections: [
@@ -390,7 +390,7 @@ const content = {
     label: 'قانوني',
     title: 'الشروط والأحكام',
     lastUpdated: 'آخر تحديث: 25-04-2026',
-    welcome: 'مرحباً بكم في www.h2o.fi',
+    welcome: 'مرحباً بكم في https://saanatuotanto.com/',
     intro: 'تحدد هذه الشروط والأحكام القواعد واللوائح الخاصة باستخدام الموقع الإلكتروني الذي تديره شركة Saana Tuotanto Oy.',
     consent: 'من خلال الوصول إلى هذا الموقع، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق، يرجى عدم استخدام موقعنا.',
     sections: [
@@ -457,7 +457,7 @@ export default function TermsPage() {
             <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #eae7e1' }}>
               <p>
                 Email: <a href="mailto:admin@saanatuatanto.com" style={styles.link}>admin@saanatuatanto.com</a><br />
-                Website: <a href="https://www.h2o.fi" target="_blank" rel="noreferrer" style={styles.link}>www.h2o.fi</a>
+                Website: <a href="https://saanatuotanto.com/" target="_blank" rel="noreferrer" style={styles.link}>https://saanatuotanto.com/</a>
               </p>
             </div>
           </div>

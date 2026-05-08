@@ -59,7 +59,7 @@ async function updateRefundPolicy() {
         },
         {
           title: "9. Contact Us",
-          body: "If you have any questions about this policy, please contact:\nSaana Tuotanto Oy\nEmail: admin@saanatuotanto.com\nWebsite: www.h2o.fi"
+          body: "If you have any questions about this policy, please contact:\nSaana Tuotanto Oy\nEmail: admin@saanatuotanto.com\nWebsite: https://saanatuotanto.com/"
         }
       ]
     };
