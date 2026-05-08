@@ -44,7 +44,7 @@ export default function BlogPostPage() {
     return (
       <div className="blog-post-loading">
         <Loader2 size={40} className="animate-spin" />
-        <p>Loading article...</p>
+        <p>{bp.loading || 'Loading article...'}</p>
       </div>
     );
   }
@@ -52,8 +52,8 @@ export default function BlogPostPage() {
   if (!blog) {
     return (
       <div className="blog-post-not-found">
-        <h2>Article Not Found</h2>
-        <p>The article you are looking for doesn't exist or has been moved.</p>
+        <h2>{bp.notFound || 'Article Not Found'}</h2>
+        <p>{bp.notFoundSub || "The article you are looking for doesn't exist or has been moved."}</p>
         <Link to="/blog" className="blog-post-back-btn">
           <ArrowLeft size={18} /> {bp.backToJournal || 'Back to Journal'}
         </Link>
@@ -173,9 +173,9 @@ export default function BlogPostPage() {
         {/* Author Footer */}
         <div className="blog-post-footer">
           <div className="blog-post-footer__brand">
-            <h3>STO Green</h3>
-            <p>Premium urban agriculture straight from our Helsinki vertical farm.</p>
-            <Link to="/shop" className="blog-post-shop-btn">Shop Microgreens</Link>
+            <h3>{bp.stoGreen || 'STO Green'}</h3>
+            <p>{bp.premiumUrbanAg || 'Premium urban agriculture straight from our Helsinki vertical farm.'}</p>
+            <Link to="/shop" className="blog-post-shop-btn">{bp.shopMicrogreens || 'Shop Microgreens'}</Link>
           </div>
         </div>
       </section>

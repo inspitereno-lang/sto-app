@@ -68,6 +68,24 @@ const seedData = [
     content: {
       label: 'WHAT WE OFFER',
       title: 'Pure & Premium.'
+    },
+    translations: {
+      fi: { label: 'MITÄ TARJOAMME', title: 'Puhdasta & Ensiluokkaista.' },
+      sv: { label: 'VAD VI ERBJUDER', title: 'Rent & Premium.' },
+      no: { label: 'HVA VI TILBYR', title: 'Rent & Premium.' },
+      da: { label: 'HVAD VI TILBYDER', title: 'Rent & Premium.' },
+      et: { label: 'MIDA PAKUME', title: 'Puhas ja esmaklassiline.' },
+      de: { label: 'WAS WIR ANBIETEN', title: 'Pur & Premium.' },
+      nl: { label: 'WAT WIJ BIEDEN', title: 'Puur & Premium.' },
+      fr: { label: 'CE QUE NOUS PROPOSONS', title: 'Pur & Premium.' },
+      pl: { label: 'CO OFERUJEMY', title: 'Czyste i Premium.' },
+      es: { label: 'LO QUE OFRECEMOS', title: 'Puro y Premium.' },
+      it: { label: 'COSA OFFRIAMO', title: 'Puro e Premium.' },
+      pt: { label: 'O QUE OFERECEMOS', title: 'Puro e Premium.' },
+      el: { label: 'ΤΙ ΠΡΟΣΦΕΡΟΥΜΕ', title: 'Καθαρό & Premium.' },
+      tr: { label: 'NELER SUNUYORUZ', title: 'Saf ve Premium.' },
+      jp: { label: '私たちのサービス', title: 'ピュア＆プレミアム。' },
+      ar: { label: 'ما نقدمه', title: 'نقي ومميز.' }
     }
   },
   {
@@ -365,22 +383,26 @@ const seedData = [
       stayInformed: 'Stay Informed',
       stayInformedSub: 'Get our latest articles on microgreens science, recipes, and Nordic wellness delivered to your inbox.',
       emailPlaceholder: 'Your email address',
-      subscribe: 'Subscribe'
+      subscribe: 'Subscribe',
+      shopNow: 'Shop Now'
     },
     translations: {
-      fi: {
-        label: 'Terveys ja elämäntapa',
-        title: 'STO Journal',
-        sub: 'Tieteellisiä näkemyksiä mikrovihreistä, ravinnosta ja tietoisen pohjoismaisen elämän taiteesta.',
-        filterTitle: 'Suodata aiheen mukaan',
-        all: 'Kaikki',
-        emptyState: 'Tästä aiheesta ei löytynyt artikkeleita.',
-        readArticle: 'Lue artikkeli',
-        stayInformed: 'Pysy ajan tasalla',
-        stayInformedSub: 'Tilaa uusimmat artikkelimme mikrovihreiden tieteestä, resepteistä ja pohjoismaisesta hyvinvoinnista suoraan sähköpostiisi.',
-        emailPlaceholder: 'Sähköpostiosoitteesi',
-        subscribe: 'Tilaa'
-      }
+      fi: { label: 'Terveys ja elämäntapa', title: 'STO Journal', sub: 'Tieteellisiä näkemyksiä mikrovihreistä, ravinnosta ja tietoisen pohjoismaisen elämän taiteesta.', filterTitle: 'Suodata aiheen mukaan', all: 'Kaikki', emptyState: 'Tästä aiheesta ei löytynyt artikkeleita.', readArticle: 'Lue artikkeli', stayInformed: 'Pysy ajan tasalla', stayInformedSub: 'Tilaa uusimmat artikkelimme mikrovihreiden tieteestä, resepteistä ja pohjoismaisesta hyvinvoinnista suoraan sähköpostiisi.', emailPlaceholder: 'Sähköpostiosoitteesi', subscribe: 'Tilaa', shopNow: 'Osta nyt' },
+      sv: { label: 'Hälsa & Livsstil', title: 'STO Journal', sub: 'Vetenskapligt underbyggda insikter om microgreens, nutrition och konsten att leva ett medvetet nordiskt liv.', filterTitle: 'Filtrera efter ämne', all: 'Alla', readArticle: 'Läs artikel', shopNow: 'Köp nu' },
+      no: { shopNow: 'Kjøp nå' },
+      da: { shopNow: 'Køb nu' },
+      et: { shopNow: 'Osta kohe' },
+      de: { shopNow: 'Jetzt kaufen' },
+      nl: { shopNow: 'Nu kopen' },
+      fr: { shopNow: 'Acheter maintenant' },
+      pl: { shopNow: 'Kup teraz' },
+      es: { shopNow: 'Comprar ahora' },
+      it: { shopNow: 'Acquista ora' },
+      pt: { shopNow: 'Comprar agora' },
+      el: { shopNow: 'Αγοράστε τώρα' },
+      tr: { shopNow: 'Şimdi Satın Al' },
+      jp: { shopNow: '今すぐ購入' },
+      ar: { shopNow: 'تسوق الآن' }
     }
   },
   {

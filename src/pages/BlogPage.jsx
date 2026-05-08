@@ -200,9 +200,9 @@ export default function BlogPage() {
           transition={{ duration: 0.6 }}
         >
           <Sprout size={32} className="blog-cta__icon" />
-          <h3 className="blog-cta__title">{bp.ctaShopTitle || 'Experience the Freshness'}</h3>
+          <h3 className="blog-cta__title">{bp.experienceFreshness || 'Experience the Freshness'}</h3>
           <p className="blog-cta__sub">
-            {bp.ctaShopSub || 'Explore our full range of organic, sustainably grown microgreens and elevate your daily nutrition.'}
+            {bp.elevateNutrition || 'Explore our full range of organic, sustainably grown microgreens and elevate your daily nutrition.'}
           </p>
           <Link to="/shop" className="blog-cta__btn">
             {bp.shopNow || 'Shop Now'} <ChevronRight size={16} />

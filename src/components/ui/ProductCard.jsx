@@ -46,11 +46,11 @@ export default function ProductCard({ product }) {
           onError={e => { e.target.src = 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80'; }}
         />
         <div className="product-card__badges">
-          {product.isNew && <span className="badge badge-new">New</span>}
-          {product.isFeatured && <span className="badge badge-featured">Featured</span>}
+          {product.isNew && <span className="badge badge-new">{p.newBadge || 'New'}</span>}
+          {product.isFeatured && <span className="badge badge-featured">{p.featuredBadge || 'Featured'}</span>}
         </div>
         <div className="product-card__overlay">
-          <span className="product-card__view">View Details</span>
+          <span className="product-card__view">{p.viewDetails || 'View Details'}</span>
         </div>
       </Link>
 
@@ -58,7 +58,7 @@ export default function ProductCard({ product }) {
         <div className="product-card__meta">
           <span className="product-card__category">
             {product.category === 'microgreens' ? p.filterAll === 'All' ? 'Microgreens' : p.filterAll :
-             product.category === 'water' ? 'Premium Water' : 'Luxury Candles'}
+             product.category === 'water' ? p.premiumWater || 'Premium Water' : p.luxuryCandles || 'Luxury Candles'}
           </span>
           <span className={`badge ${stock.cls}`}>{p[product.stockStatus === 'instock' ? 'inStock' : product.stockStatus === 'lowstock' ? 'lowStock' : 'outOfStock'] || stock.label}</span>
         </div>
@@ -76,7 +76,7 @@ export default function ProductCard({ product }) {
           <div className="product-card__price-block">
             <span className="product-card__price">€{(product.price || 0).toFixed(2)}</span>
             {product.stock > 0 && product.stock <= 10 && (
-              <span className="product-card__qty">{product.stock} left</span>
+              <span className="product-card__qty">{product.stock} {p.left || 'left'}</span>
             )}
           </div>
           <motion.button
@@ -87,7 +87,7 @@ export default function ProductCard({ product }) {
             aria-label={p.addToCart}
           >
             {added ? <Check size={16} /> : <ShoppingCart size={16} />}
-            <span>{added ? 'Added!' : (product.stockStatus === 'outofstock' ? p.outOfStock : p.addToCart)}</span>
+            <span>{added ? p.added || 'Added!' : (product.stockStatus === 'outofstock' ? p.outOfStock : p.addToCart)}</span>
           </motion.button>
         </div>
       </div>
