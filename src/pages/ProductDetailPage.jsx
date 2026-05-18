@@ -78,7 +78,7 @@ export default function ProductDetailPage() {
     </main>
   );
 
-  const imgs = product.images || [product.image];
+  const imgs = (product.images && product.images.length > 0) ? product.images : [product.image || 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=700&q=80'];
   const productId = product._id || product.id;
   const related = allProducts.filter(pr => pr.category === product.category && (pr._id || pr.id) !== productId).slice(0,4);
 

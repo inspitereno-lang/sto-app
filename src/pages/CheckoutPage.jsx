@@ -194,7 +194,6 @@ export default function CheckoutPage() {
             <form onSubmit={handleSubmit}>
               {/* Contact */}
               <div style={styles.sectionHeader}>
-                <div style={styles.sectionNum}>01</div>
                 <h2 style={styles.sectionTitle}>{c.contact}</h2>
               </div>
               <Input label={c.email} id="email" value={form.email} onChange={v => set('email', v)} placeholder="you@example.com" type="email" autoComplete="email" />
@@ -202,7 +201,6 @@ export default function CheckoutPage() {
 
               {/* Shipping */}
               <div style={{ ...styles.sectionHeader, marginTop: '32px' }}>
-                <div style={styles.sectionNum}>02</div>
                 <h2 style={styles.sectionTitle}>{c.shipping}</h2>
               </div>
               <Input label={c.name} id="name" value={form.name} onChange={v => set('name', v)} placeholder={c.name} autoComplete="name" />
@@ -220,7 +218,6 @@ export default function CheckoutPage() {
 
               {/* Payment */}
               <div style={{ ...styles.sectionHeader, marginTop: '32px' }}>
-                <div style={styles.sectionNum}>03</div>
                 <h2 style={styles.sectionTitle}>{c.payment}</h2>
               </div>
               <div style={styles.payCard}>
@@ -240,9 +237,9 @@ export default function CheckoutPage() {
               </motion.button>
 
               <div style={styles.secure}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Lock size={13} style={{ color: '#7BAA8D' }} />
-                  <span style={{ fontWeight: 600 }}>{c.secure}</span>
+                <div style={styles.secureTitle}>
+                  <Lock size={16} style={{ color: '#0F2F24', strokeWidth: 2.5 }} />
+                  <span>{c.secure}</span>
                 </div>
                 <p style={styles.secureDesc}>{c.secureDesc}</p>
               </div>
@@ -287,13 +284,46 @@ const styles = {
   title: { fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.5rem,5vw,3.5rem)', color: '#0F2F24', fontWeight: 300, marginBottom: '8px' },
   sub: { fontSize: '16px', color: '#9a9a9a', marginBottom: '48px' },
   layout: { display: 'grid', gridTemplateColumns: '1fr 400px', gap: '64px', alignItems: 'start', position: 'relative' },
-  sectionHeader: { display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '24px' },
-  sectionNum: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.8rem', color: '#e0ddd6', fontWeight: 300 },
+  sectionHeader: { marginBottom: '24px' },
   sectionTitle: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.6rem', color: '#0F2F24', fontWeight: 400 },
   payCard: { background: '#F3F0EA', borderRadius: '16px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' },
   payCardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' },
-  secure: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', marginTop: '24px' },
-  secureDesc: { fontSize: '11px', color: '#9a9a9a', textAlign: 'center', maxWidth: '300px', lineHeight: '1.5' },
+  secure: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    marginTop: '32px',
+    padding: '24px',
+    background: '#f4fbf7',
+    border: '1px dashed #7BAA8D',
+    borderRadius: '16px',
+    textAlign: 'center',
+    boxShadow: '0 4px 20px rgba(15, 47, 36, 0.03)',
+    maxWidth: '100%',
+    transition: 'all 0.3s ease'
+  },
+  secureTitle: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: '16px',
+    fontWeight: '700',
+    color: '#0F2F24',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    letterSpacing: '0.01em'
+  },
+  secureDesc: {
+    fontFamily: "'Inter', sans-serif",
+    fontSize: '13px',
+    fontWeight: '500',
+    color: '#4A5A52',
+    textAlign: 'center',
+    maxWidth: '380px',
+    lineHeight: '1.6',
+    margin: 0
+  },
   summary: { background: '#ffffff', border: '1px solid #eae7e1', borderRadius: '20px', padding: '40px', position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '20px' },
   summaryTitle: { fontFamily: "'Cormorant Garamond',serif", fontSize: '1.5rem', color: '#0F2F24', fontWeight: 400 },
   summaryItems: { display: 'flex', flexDirection: 'column', gap: '16px' },

@@ -26,7 +26,7 @@ LANG_MAP = {
     # 'zh': 'zh-CN',
 }
 
-translator = GoogleTranslator(source='en')
+
 
 def translate_text(text, target_lang):
     if not text or not text.strip():

@@ -4,7 +4,7 @@ import { ArrowRight, Leaf } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function AboutPage() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const a = t.about_page || t.aboutPage || {};
   const values = a.values || [
     { icon: '🌿', title: a.v1Title, text: a.v1Desc },
@@ -43,6 +43,105 @@ export default function AboutPage() {
                 onError={e=>{e.target.src='https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=700&q=80';}}/>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Business Areas Section */}
+      <section className="section" style={{ background: '#FAFAF8', padding: '80px 0 60px' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+            <div className="section-label" style={{ color: '#7BAA8D', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', fontSize: '11px', marginBottom: '8px' }}>
+              {language === 'fi' ? 'LIIKETOIMINTA-ALUEEMME' : 'OUR BUSINESS AREAS'}
+            </div>
+            <h2 className="section-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', color: '#0F2F24', fontWeight: 300 }}>
+              {language === 'fi' ? 'Monipuoliset Palvelumme' : 'Diverse Verticals of STO'}
+            </h2>
+            <p style={{ color: '#6b6b6b', fontSize: '15px', maxWidth: '600px', margin: '12px auto 0', lineHeight: 1.6 }}>
+              {language === 'fi' 
+                ? 'STO yhdistää luonnon, elämäntyylin ja huipputeknologian saumattomaksi kokonaisuudeksi kolmella päätoimialallaan. Napsauta korttia nähdäksesi lisätietoja.'
+                : 'From organic farming to premium lifestyle products and modern technology services, we bridge the gap between nature and innovation. Click a card to view detailed capabilities.'}
+            </p>
+          </div>
+
+          <div style={styles.areasGrid} className="res-grid-3">
+            {/* Area 1: STO Green */}
+            <Link to="/about/green" style={{ textDecoration: 'none' }}>
+              <motion.div 
+                style={{
+                  ...styles.areaCard,
+                  borderTop: '4px solid #7BAA8D'
+                }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(15, 47, 36, 0.08)', borderColor: '#7BAA8D' }}
+                transition={{ duration: 0.3 }}
+              >
+                <div style={{ ...styles.areaIconBg, background: '#eaf2ee' }}>
+                  <Leaf size={28} style={{ color: '#0F2F24' }} />
+                </div>
+                <h3 style={styles.areaCardTitle}>STO Green</h3>
+                <p style={styles.areaCardDesc}>
+                  {language === 'fi'
+                    ? 'Huipputason pystyviljeltyjä versoja ja elävää ravintoa Vantaan puhtaasta laboratoriostamme.'
+                    : 'Hyper-local vertical farming and high-vitality microgreens grown using sustainable climate automation.'}
+                </p>
+                <div style={{ ...styles.areaCardLink, color: '#7BAA8D' }}>
+                  <span>{language === 'fi' ? 'Tutustu tarkemmin' : 'View Details'}</span>
+                  <ArrowRight size={14} style={{ marginLeft: '4px' }} />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Area 2: STO Gold */}
+            <Link to="/about/gold" style={{ textDecoration: 'none' }}>
+              <motion.div 
+                style={{
+                  ...styles.areaCard,
+                  borderTop: '4px solid #CAA36D'
+                }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(15, 47, 36, 0.08)', borderColor: '#CAA36D' }}
+                transition={{ duration: 0.3 }}
+              >
+                <div style={{ ...styles.areaIconBg, background: '#fcf8f2' }}>
+                  <span style={{ fontSize: '24px', lineHeight: 1 }}>✨</span>
+                </div>
+                <h3 style={styles.areaCardTitle}>STO Gold</h3>
+                <p style={styles.areaCardDesc}>
+                  {language === 'fi'
+                    ? 'Ylelliset käsinvaletut kynttilät, korut ja pohjoismainen design arjen hemmotteluun.'
+                    : 'Premium hand-poured Nordic candles, luxury jewelry, and lifestyle products curated for mindful moments.'}
+                </p>
+                <div style={{ ...styles.areaCardLink, color: '#CAA36D' }}>
+                  <span>{language === 'fi' ? 'Tutustu tarkemmin' : 'View Details'}</span>
+                  <ArrowRight size={14} style={{ marginLeft: '4px' }} />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Area 3: STO IT & Tech */}
+            <Link to="/about/it" style={{ textDecoration: 'none' }}>
+              <motion.div 
+                style={{
+                  ...styles.areaCard,
+                  borderTop: '4px solid #2b5c8f'
+                }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(15, 47, 36, 0.08)', borderColor: '#2b5c8f' }}
+                transition={{ duration: 0.3 }}
+              >
+                <div style={{ ...styles.areaIconBg, background: '#eef4f9' }}>
+                  <span style={{ fontSize: '24px', lineHeight: 1 }}>💻</span>
+                </div>
+                <h3 style={styles.areaCardTitle}>STO IT</h3>
+                <p style={styles.areaCardDesc}>
+                  {language === 'fi'
+                    ? 'Älykkäät ohjelmistoratkaisut, viljelyautomaatiojärjestelmät ja moderni digitaalinen arkkitehtuuri.'
+                    : 'Bespoke software engineering, agricultural IoT systems, and high-performance digital consulting.'}
+                </p>
+                <div style={{ ...styles.areaCardLink, color: '#2b5c8f' }}>
+                  <span>{language === 'fi' ? 'Tutustu tarkemmin' : 'View Details'}</span>
+                  <ArrowRight size={14} style={{ marginLeft: '4px' }} />
+                </div>
+              </motion.div>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -113,4 +212,54 @@ const styles = {
   valueCard: { background:'#ffffff', borderRadius:'16px', padding:'32px 24px', border:'1px solid #eae7e1', transition:'all 0.3s ease', cursor:'default' },
   valueTitle: { fontFamily:"'Cormorant Garamond',serif", fontSize:'1.2rem', color:'#0F2F24', fontWeight:400, marginBottom:'10px' },
   valueText: { fontSize:'13px', color:'#6b6b6b', lineHeight:1.7 },
+  areasGrid: { 
+    display: 'grid', 
+    gridTemplateColumns: 'repeat(3, 1fr)', 
+    gap: '32px', 
+    marginTop: '40px' 
+  },
+  areaCard: { 
+    background: '#ffffff', 
+    border: '1px solid #eae7e1', 
+    borderRadius: '24px', 
+    padding: '40px 32px', 
+    height: '100%', 
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'flex-start',
+    textAlign: 'left',
+    transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)', 
+    cursor: 'pointer' 
+  },
+  areaIconBg: { 
+    width: '56px', 
+    height: '56px', 
+    borderRadius: '16px', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    marginBottom: '24px' 
+  },
+  areaCardTitle: { 
+    fontFamily: "'Cormorant Garamond', serif", 
+    fontSize: '1.8rem', 
+    color: '#0F2F24', 
+    fontWeight: 400, 
+    marginBottom: '12px' 
+  },
+  areaCardDesc: { 
+    fontSize: '14px', 
+    color: '#6b6b6b', 
+    lineHeight: 1.7, 
+    marginBottom: '24px',
+    flexGrow: 1
+  },
+  areaCardLink: { 
+    display: 'flex', 
+    alignItems: 'center', 
+    fontSize: '13px', 
+    fontWeight: 600, 
+    color: '#0F2F24', 
+    fontFamily: "'Inter', sans-serif" 
+  },
 };

@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Proxy /api requests to the backend server to avoid CORS issues
+  # This requires mod_proxy and mod_proxy_http to be enabled on your server
+  RewriteRule ^api/(.*)$ https://api.saanatuotanto.com/api/$1 [P,L]
+
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

@@ -14,6 +14,7 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderSummaryPage from './pages/OrderSummaryPage';
 import AboutPage from './pages/AboutPage';
+import BusinessDetailPage from './pages/BusinessDetailPage';
 import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import TermsPage from './pages/TermsPage';
@@ -61,6 +62,7 @@ function AppShell() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-summary" element={<OrderSummaryPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/about/:vertical" element={<BusinessDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<Navigate to="/account" replace />} />
           <Route path="/account" element={<LoginPage />} />
