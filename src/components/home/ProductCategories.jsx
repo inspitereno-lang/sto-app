@@ -12,6 +12,14 @@ export default function ProductCategories() {
   const [cats, setCats] = useState([]);
   const containerRef = useRef(null);
   const [constraints, setConstraints] = useState({ left: 0, right: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -110,25 +118,31 @@ export default function ProductCategories() {
           )}
         </div>
 
-        <div className={`product-cat-container ${translatedCats.length > 4 ? 'is-slider' : ''}`}>
+        <div className={`product-cat-container ${!isMobile && translatedCats.length > 4 ? 'is-slider' : ''}`}>
           <div style={{ position: 'relative' }}>
             <motion.div 
+              ref={sliderRef}
               className="cat-slider"
-              drag={translatedCats.length > 4 ? "x" : false}
+              drag={!isMobile && translatedCats.length > 4 ? "x" : false}
               dragConstraints={constraints}
-              animate={{ x: dragX }}
-              onDragEnd={(_, info) => setDragX(prev => prev + info.offset.x)}
+              animate={isMobile ? { x: 0 } : { x: dragX }}
+              onDragEnd={(_, info) => {
+                if (!isMobile) {
+                  setDragX(prev => prev + info.offset.x);
+                }
+              }}
               style={{ 
-                display: 'grid', 
-                gridTemplateColumns: translatedCats.length > 4 ? `repeat(${translatedCats.length}, 300px)` : `repeat(${translatedCats.length}, 1fr)`,
-                gap: '24px', 
-                cursor: cats.length > 4 ? 'grab' : 'default',
-                paddingBottom: '40px'
+                display: isMobile ? 'flex' : 'grid', 
+                gridTemplateColumns: !isMobile && translatedCats.length > 4 ? `repeat(${translatedCats.length}, 300px)` : `repeat(${translatedCats.length}, 1fr)`,
+                gap: isMobile ? '16px' : '24px', 
+                cursor: !isMobile && cats.length > 4 ? 'grab' : 'default',
+                paddingBottom: isMobile ? '24px' : '40px'
               }}
             >
               {translatedCats.map((cat, i) => (
                 <motion.div
                   key={cat.id || cat.key}
+                  className="cat-slide-item"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "0px" }}
@@ -181,26 +195,32 @@ export default function ProductCategories() {
 
         @media (max-width: 768px) {
           .hide-mobile { display: none !important; }
-          .product-cat-container.is-slider, .cat-slider {
+          
+          .product-cat-container {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: visible !important;
+          }
+          
+          .cat-slider {
             display: flex !important;
             overflow-x: auto !important;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 24px;
-            margin: 0 -24px;
-            padding: 0 24px 24px 24px;
+            margin: 0 -16px !important;
+            padding: 0 16px 24px 16px !important;
             gap: 16px !important;
+            transform: none !important;
           }
-          .cat-slider > div {
-            flex: 0 0 80vw !important;
-            scroll-snap-align: center;
+          
+          .cat-slide-item {
+            flex: 0 0 calc(100vw - 32px) !important;
+            max-width: none !important;
+            scroll-snap-align: start;
           }
+          
           .cat-slider::-webkit-scrollbar {
             display: none;
-          }
-          .cat-slider {
-             drag: none !important;
-             transform: none !important;
           }
         }
       `}</style>

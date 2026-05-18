@@ -1,5 +1,10 @@
 const rawBase = import.meta.env.VITE_API_URL || '/api';
-const API_BASE = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+let API_BASE = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+
+// Defensive fallback: If VITE_API_URL is an external host without the /api suffix, automatically append it
+if (API_BASE.startsWith('http') && !API_BASE.endsWith('/api') && !API_BASE.includes('/api/')) {
+  API_BASE = `${API_BASE}/api`;
+}
 
 export const api = {
   // Auth
